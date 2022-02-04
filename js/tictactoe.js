@@ -106,23 +106,29 @@ function makeMove(event)
     
   // CHECK IF WE HAVE A WINNER
   isWinner();
-    
+  if(checkIfTie()){
+    let currentPlayerText = document.querySelector('.board___player-turn');
+    currentPlayerText.innerHTML = `
+      <div class="congratulations">The game is tie!</div>
+    `;
+  }
+  else {
   // Update turn count so next player can choose
   turn ++;
 
   // CHANGE BOARD HEADER INFO
   changeBoardHeaderNames();
+  }
+
 }
 
 function checkIfTie() 
 {
   if (turn > 7) 
   {
-    currentPlayerText.innerHTML = `
-        <span class="name--style">${playerY.name}</span>, The game is draw!.
-        <div class="u-r-winner"></div>
-      `
+    return true;
   }
+  return false;
 }
 
 function isWinner() 
@@ -187,11 +193,6 @@ function isWinner()
     }
   });
 
-  if (!winner) 
-  {
-    checkIfTie();
-  }
-  
   return false;
 }
 
@@ -230,12 +231,12 @@ function resetBoard()
   turn = 0;
   winner = false;
 
-  let currentPlayerText = document.querySelector('.board___player-turn');
-  currentPlayerText.innerHTML = `
-    <span class="name--style">${playerX.name}</span>, your turn!
-    <div class="u-r-winner"></div>
-  `
-
+  // let currentPlayerText = document.querySelector('.board___player-turn');
+  // currentPlayerText.innerHTML = `
+  //   <span class="name--style">${playerX.name}</span>, your turn!
+  //   <div class="u-r-winner"></div>
+  // `
+  changeBoardHeaderNames();
   addCellClickListener();
 }
 
