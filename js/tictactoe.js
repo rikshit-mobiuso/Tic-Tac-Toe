@@ -118,7 +118,10 @@ function checkIfTie()
 {
   if (turn > 7) 
   {
-    alert('game over a tie')
+    currentPlayerText.innerHTML = `
+        <span class="name--style">${playerY.name}</span>, The game is draw!.
+        <div class="u-r-winner"></div>
+      `
   }
 }
 
