@@ -1,6 +1,6 @@
 "use strict";
 
-window.addEventListener('load', app);
+window.addEventListener('load', startGame);
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']; 
 let turn = 0; // Keeps track if X or O player's turn
@@ -17,7 +17,7 @@ const player = (name) =>
  let playerY = player("");
 
  // INITIALIZE APP
-function app() 
+function startGame() 
 {
   let inputField = document.querySelector('.input-field').focus();
 
@@ -231,11 +231,6 @@ function resetBoard()
   turn = 0;
   winner = false;
 
-  // let currentPlayerText = document.querySelector('.board___player-turn');
-  // currentPlayerText.innerHTML = `
-  //   <span class="name--style">${playerX.name}</span>, your turn!
-  //   <div class="u-r-winner"></div>
-  // `
   changeBoardHeaderNames();
   addCellClickListener();
 }
